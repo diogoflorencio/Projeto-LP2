@@ -27,7 +27,10 @@ public class GerenteDeCategoria {
 	
 	public boolean adicionaCategorias(CategoriaDeTransacao categoria){
 		Iterator<CategoriaDeTransacao> it = categorias.iterator();
-		while (it.hasNext())if(categorias.equals(it.next()))return false;
+		while (it.hasNext()){
+			if(categoria.equals(it.next()))
+				return false;
+		}
 		categorias.add(categoria);
 		return true;
 	}
@@ -35,9 +38,9 @@ public class GerenteDeCategoria {
 		return categorias.remove(categoria);
 	}
 	
-	public ArrayList<CategoriaDeTransacao> pesquisaCategoriaPorCor(Cor cor){
+	public List<CategoriaDeTransacao> pesquisaCategoriaPorCor(Cor cor){
 		Iterator<CategoriaDeTransacao> it = categorias.iterator();
-		ArrayList<CategoriaDeTransacao> pesquisa = new ArrayList<CategoriaDeTransacao>();
+		List<CategoriaDeTransacao> pesquisa = new ArrayList<CategoriaDeTransacao>();
 		CategoriaDeTransacao categoria;
 		while (it.hasNext()){
 			categoria = it.next();

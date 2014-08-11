@@ -6,13 +6,12 @@ import Projeto.LP2.Usuario;
 
 public class TestaUsuario {
 	private Usuario usuario;
+	
 	@Before
 	public void criaUsuario() throws Exception{
 		usuario = new Usuario("usuario", "email@fake.com", "123456", "123456", "de um a seis");
 	}
 	
-	
-	@Test
 	public void testaUsuario() {
 		try{
 			Assert.assertEquals("usuario", usuario.getNome());

@@ -9,7 +9,7 @@ public class Transacao implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Recorrencia recorrencia;
 	private CategoriaDeTransacao categoria;
-	private String descricao, data;
+	private String descricao, data, hora;
 	protected String codigo;
 	private double valor;
 
@@ -29,11 +29,16 @@ public class Transacao implements Serializable{
 	}
 
 	private void insereData(){
-		SimpleDateFormat dt = new SimpleDateFormat("hh:mm:ss - dd/MM/yyyy");
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
 		data = dt.format(new Date());
+		dt = new SimpleDateFormat("hh:mm:ss");
+		hora  = dt.format(new Date());
 	}
 	public String get_Data(){
 		return data;
+	}
+	public String getHora(){
+		return hora;
 	}
 
 	public String get_Descricao(){

@@ -36,13 +36,13 @@ public class TestaTransacao {
 		}catch(Exception e){
 			Assert.assertEquals("Descrição invalido", e.getMessage());
 		}
-		
-		//equals
-		
+	}
+	
+	@Test
+	public void testaEquals() throws Exception{
 		Assert.assertTrue(new Despesa("descricao qualquer", 10, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO)).equals(new Despesa("descricao qualquer", 10, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO))));
 		Assert.assertTrue(new Despesa("descricao diferente", 10, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO)).equals(new Despesa("descricao qualquer", 10, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO))));
 		Assert.assertFalse(new Despesa("descricao qualquer", 10, Recorrencia.SEMANAL, new CategoriaDeTransacao("Categoria", Cor.AMARELO)).equals(new Despesa("descricao qualquer", 10, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO))));
 		Assert.assertFalse(new Despesa("descricao qualquer", 10, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria2", Cor.AMARELO)).equals(new Despesa("descricao qualquer", 10, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO))));
 	}
-
 }

@@ -6,6 +6,7 @@ import Projeto.LP2.CategoriaDeTransacao;
 import Projeto.LP2.Cor;
 
 public class TestaCategoriaDeTramsacao {
+	
 	@Test
 	public void testaCategoriaDeTramsacao() throws Exception {
 		try{
@@ -27,10 +28,12 @@ public class TestaCategoriaDeTramsacao {
 		}catch(Exception e){
 			Assert.assertEquals("Nome invalido", e.getMessage());
 		}
-		//equals
+	}
+	
+	@Test
+	public void testaEquals() throws Exception{
 		Assert.assertTrue(new CategoriaDeTransacao("Categoria", Cor.AMARELO).equals(new CategoriaDeTransacao("Categoria", Cor.AMARELO)));
 		Assert.assertTrue(new CategoriaDeTransacao("Categoria", Cor.AMARELO).equals(new CategoriaDeTransacao("Categoria", Cor.AZUL)));
 		Assert.assertFalse(new CategoriaDeTransacao("Categoria", Cor.AMARELO).equals(new CategoriaDeTransacao("Categoria2", Cor.AMARELO)));
 	}
-
 }

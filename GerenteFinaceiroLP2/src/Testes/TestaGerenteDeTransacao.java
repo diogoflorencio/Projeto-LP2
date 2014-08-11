@@ -20,21 +20,28 @@ public class TestaGerenteDeTransacao {
 	}
 
 	@Test
-	public void testaGerenteDeTransacao() throws Exception {
+	public void testaGerenteDeTransacao() throws Exception  {
 		Assert.assertTrue(gerente.adicionaTransacao(transacao));
 		Assert.assertFalse(gerente.adicionaTransacao(transacao));
 		Assert.assertTrue(gerente.adicionaTransacao(new Despesa("descricao qualquer", 9, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO))));
-		// pesquisa
+		Assert.assertTrue(gerente.salvar());
+	}
+	
+	@Test
+	public void testaPesquisa() throws Exception {
+		Assert.assertTrue(gerente.carrega());
 		Assert.assertEquals(2, gerente.pesquisaPorCategoria(new CategoriaDeTransacao("Categoria", Cor.AMARELO)).size());
 		Assert.assertEquals(0, gerente.pesquisaPorCategoria(new CategoriaDeTransacao("Categoria2", Cor.AZUL)).size());
 		Assert.assertEquals(2, gerente.pesquisaPorData(transacao.get_Data()).size());
 		Assert.assertEquals(0, gerente.pesquisaPorData("data fake").size());
 		Assert.assertEquals(2, gerente.pesquisaPorRecorrencia(Recorrencia.NENHUMA).size());
 		Assert.assertEquals(0, gerente.pesquisaPorRecorrencia(Recorrencia.MENSAL).size());
-		//remove
+	}
+	
+	@Test
+	public void testaRemove() throws Exception {
+		Assert.assertTrue(gerente.carrega());
 		gerente.removeTransacao(new Despesa("descricao qualquer", 9, Recorrencia.NENHUMA, new CategoriaDeTransacao("Categoria", Cor.AMARELO)));
 		Assert.assertEquals(1, gerente.pesquisaPorCategoria(new CategoriaDeTransacao("Categoria", Cor.AMARELO)).size());
-		gerente.salvar();
 	}
-
 }
